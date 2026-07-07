@@ -1,4 +1,24 @@
 
+export interface Artist {
+    id:                           number;
+    api_model:                    string;
+    api_link:                     string;
+    title:                        string;
+    sort_title:                   string;
+    alt_titles:                   string[];
+    is_artist:                    boolean;
+    birth_date:                   null;
+    death_date:                   null;
+    description:                  null;
+    ulan_id:                      null;
+    suggest_autocomplete_boosted: SuggestAutocompleteBoosted;
+    suggest_autocomplete_all:     SuggestAutocompleteAll;
+    source_updated_at:            Date;
+    updated_at:                   Date;
+    timestamp:                    Date;
+}
+
+
 export interface Artwork {
     id:                            number;
     api_model:                     string;
@@ -100,6 +120,64 @@ export interface Artwork {
     timestamp:                     Date;
 }
 
+export interface ArtworkESResult {
+    _score:     number;
+    id:         number;
+    api_model:  string;
+    api_link:   string;
+    is_boosted: boolean;
+    title:      string;
+    thumbnail:  Thumbnail;
+    timestamp:  Date;
+}
+
+
+export interface Exhibition {
+    id:                           number;
+    api_model:                    string;
+    api_link:                     string;
+    title:                        string;
+    is_featured:                  boolean;
+    position:                     number;
+    short_description:            string;
+    web_url:                      string;
+    image_url:                    string;
+    status:                       string;
+    aic_start_at:                 Date;
+    aic_end_at:                   Date;
+    gallery_id:                   null;
+    gallery_title:                null;
+    artwork_ids:                  number[];
+    artwork_titles:               string[];
+    artist_ids:                   number[];
+    site_ids:                     any[];
+    image_id:                     null;
+    alt_image_ids:                any[];
+    document_ids:                 any[];
+    suggest_autocomplete_boosted: string;
+    suggest_autocomplete_all:     SuggestAutocompleteAll;
+    source_updated_at:            Date;
+    updated_at:                   Date;
+    timestamp:                    Date;
+}
+
+export interface Gallery {
+    id:                number;
+    api_model:         string;
+    api_link:          string;
+    title:             string;
+    latitude:          number;
+    longitude:         number;
+    tgn_id:            null;
+    is_closed:         boolean;
+    number:            string;
+    floor:             string;
+    latlon:            string;
+    source_updated_at: Date;
+    updated_at:        Date;
+    timestamp:         Date;
+}
+
 export interface Color {
     h:          number;
     l:          number;
@@ -116,6 +194,10 @@ export interface DimensionsDetail {
     clarification: null | string;
 }
 
+export interface SuggestAutocompleteBoosted {
+    input:  string[];
+    weight: number;
+}
 export interface SuggestAutocompleteAll {
     input:    string[];
     contexts: Contexts;

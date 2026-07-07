@@ -8,9 +8,14 @@ const router = createRouter({
             redirect: '/artworks'
         },
         {
-            path: '/:collection(artworks|galleries|exhibitions)/:page?',
+            path: '/:collection(artworks|artists)',
             name: 'collectionList',
             component: () => import('@/views/CollectionPage.vue')
+        },
+        {
+            path: '/:collection(artworks|artists)/:id',
+            name: 'collectionDetail',
+            component: () => import('@/views/CollectionDetail.vue')
         },
         {
             path: '/:pathMatch(.*)*',
@@ -18,6 +23,13 @@ const router = createRouter({
             component: () => import('@/views/PathNotFound.vue'),
         },
     ],
+    scrollBehavior(_to, _from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        } else {
+            return { top: 0 };
+        }
+    },
 })
 
 export default router
