@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router';
 const route = useRoute();
 
 const links = [
-    { url: '/artworks', label: 'Artworks' },
+    { url: '/artworks', label: 'Artwork' },
     { url: '/exhibitions', label: 'Exhibitions' },
     // {url:'/about', label: 'About'},
 ]

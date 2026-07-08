@@ -128,10 +128,14 @@ onMounted(() => {
         <CollectionPagination v-model="currentPage" :total :items-per-page="12" @update:model-value="getPagedResults" />
     </template>
     <template v-else-if="!loading && results.length === 0">
-        <h3 class="font-display text-2xl col-span-12 text-center">No results to display.</h3>
+        <div class="min-h-50 flex justify-center items-center content-center w-full">
+            <h3 class="font-display text-2xl col-span-12 text-center">No results to display.</h3>
+        </div>
     </template>
     <template v-else-if="loading">
-        <h3 class="font-display text-xl col-span-12 text-center mt-12">loading...</h3>
+        <div class="min-h-50 flex justify-center items-center content-center w-full">
+            <h3 class="font-display text-xl col-span-12 text-center mt-12">loading...</h3>
+        </div>
     </template>
 </main>
 </template>
