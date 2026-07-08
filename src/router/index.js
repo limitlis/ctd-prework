@@ -20,6 +20,12 @@ const router = createRouter({
             props: true,
         },
         {
+            path: '/about',
+            name: 'about',
+            component: () => import('@/views/AboutPage.vue'),
+            props: true,
+        },
+        {
             path: '/:pathMatch(.*)*',
             name: 'PathNotFound',
             component: () => import('@/views/PathNotFound.vue'),
