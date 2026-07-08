@@ -7,9 +7,8 @@
         <button @click="changePage(-1)" :disabled="currentPage === 1" class="px-4 py-2 rounded-lg transition duration-150 
                border hover:bg-accent
                disabled:opacity-50 disabled:cursor-not-allowed">
-            Previous
+            Prev
         </button>
-
         <template v-for="page in pageRange" :key="page">
             <button @click="goToPage(page)" :disabled="currentPage === page"
                 class="px-4 py-2 rounded-lg font-medium transition duration-150 border cursor-pointer" :class="[

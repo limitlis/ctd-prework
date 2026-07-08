@@ -8,14 +8,16 @@ const router = createRouter({
             redirect: '/artworks'
         },
         {
-            path: '/:collection(artworks|artists)',
+            path: '/:collection(artworks|artists|exhibitions)',
             name: 'collectionList',
-            component: () => import('@/views/CollectionPage.vue')
+            component: () => import('@/views/CollectionPage.vue'),
+            props: true,
         },
         {
-            path: '/:collection(artworks|artists)/:id',
+            path: '/:collection(artworks|artists|exhibitions)/:id',
             name: 'collectionDetail',
-            component: () => import('@/views/CollectionDetail.vue')
+            component: () => import('@/views/CollectionDetail.vue'),
+            props: true,
         },
         {
             path: '/:pathMatch(.*)*',

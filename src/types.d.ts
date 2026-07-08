@@ -120,7 +120,7 @@ export interface Artwork {
     timestamp:                     Date;
 }
 
-export interface ArtworkESResult {
+export interface ESSearchResult {
     _score:     number;
     id:         number;
     api_model:  string;

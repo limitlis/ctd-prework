@@ -15,7 +15,7 @@ const route = useRoute();
     </div>
   </nav>
   <main class="max-w-3xl mx-auto min-h-screen px-2 py-6">
-    <router-view :key="route.fullPath"></router-view>
+    <router-view :key="route.path"></router-view>
   </main>
 </div>
 </template>
