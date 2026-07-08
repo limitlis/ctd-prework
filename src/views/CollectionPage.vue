@@ -98,7 +98,7 @@ onMounted(() => {
                 <div class="relative flex-1">
                     <input v-model="search" type="search" name="search" class="w-full bg-transparent text-sm border rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-accent hover:border-accent
                         [&::-webkit-search-cancel-button]:appearance-none" placeholder="Artwork, Artists..." />
-                    <button type="button" id="clear-btn" @click="clearSearch()"
+                    <button v-if="search.length" type="button" id="clear-btn" @click="clearSearch()"
                         class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer"
                         aria-label="Clear search">
                         <svg xmlns="http://w3.org" class="h-5 w-5" fill="none" viewBox="0 0 24 24"

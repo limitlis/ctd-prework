@@ -27,7 +27,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+const debounce = (callback: Function, wait: number) => {
+    let timeoutId = -1;
+    return (...args: any) => {
+        window.clearTimeout(timeoutId);
+        timeoutId = window.setTimeout(() => {
+            callback(...args);
+        }, wait);
+    };
+};
 
 const { total = 0, itemsPerPage = 12 } = defineProps<{
     total: number,
@@ -39,9 +48,10 @@ const currentPage = defineModel<number>({ default: 1 });
 const totalPages = computed(() => {
     return Math.ceil(total / itemsPerPage);
 });
+const windowWidth = ref(window.innerWidth);
 
 const pageRange = computed(() => {
-    const maxPagesToShow = 7;
+    const maxPagesToShow = windowWidth.value < 400 ? 3 : windowWidth.value < 500 ? 5 : 7;
     const start = Math.max(1, Math.min(currentPage.value - Math.floor(maxPagesToShow / 2), totalPages.value - maxPagesToShow + 1));
     const end = Math.min(totalPages.value, start + maxPagesToShow - 1);
 
@@ -68,5 +78,14 @@ const changePage = (delta: number) => {
 };
 
 const isPageEnabled = computed(() => totalPages.value > 1);
+const resizeListener = debounce(() => {
+    windowWidth.value = window.innerWidth;
+}, 250);
 
+onMounted(() => {
+    window.addEventListener('resize', resizeListener);
+});
+onUnmounted(() => {
+    window.removeEventListener('resize', resizeListener);
+});
 </script>

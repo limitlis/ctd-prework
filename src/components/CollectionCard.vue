@@ -13,7 +13,8 @@ const route = useRoute();
 <template>
 <div class="group flex flex-col relative col-span-12 sm:col-span-6 md:col-span-4 gap-2 space-y-2">
     <router-link :to="`/${collection}/${item.id}`">
-        <CollectionImage v-if="item?.image_id || item.id" :image-id="item.image_id" :size="400" class="aspect-square" />
+        <CollectionImage v-if="item?.image_id || item.id" :image-id="item.image_id" :size="400"
+            class="aspect-square border" />
     </router-link>
     <div class="flex flex-col">
         <router-link :to="`/${collection}/${item.id}`" class="">

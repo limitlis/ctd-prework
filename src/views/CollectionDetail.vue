@@ -56,9 +56,10 @@ onMounted(() => {
     <article v-if="item" :key="item.id" class="space-y-4">
         <h1 class="text-2xl font-display flex flex-col border-b pb-6">
             {{ item.title }}
-            <span v-if="item.artist_id" class="font-sans font-light text-lg text-muted">
+            <router-link v-if="item.artist_id" :to="`/artists/${item.artist_id}`"
+                class="font-sans font-light text-lg text-muted hover:text-accent">
                 {{ item.artist_title }}
-            </span>
+            </router-link>
             <span v-if="item.is_artist" class="font-display text-lg text-muted">
                 {{ item.birth_date }}
                 <template v-if="item.death_date">– {{ item.death_date }}</template>
@@ -68,7 +69,7 @@ onMounted(() => {
         <template v-if="item.is_artist">
             <h3 class="font-display text-lg">{{ item.artist_display }}</h3>
             <h4 class="font-display text-xl">Related Works</h4>
-            <div class="grid md:grid-cols-12 gap-6 py-8">
+            <div class="grid grid-cols-12 gap-6 py-8">
                 <template v-for="item in relatedItems" :key="item.id">
                     <CollectionCard :item />
                 </template>
