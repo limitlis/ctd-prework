@@ -8,7 +8,7 @@ const router = createRouter({
             redirect: '/artworks'
         },
         {
-            path: '/:collection(artworks|artists|exhibitions)',
+            path: '/:collection(artworks|exhibitions)',
             name: 'collectionList',
             component: () => import('@/views/CollectionPage.vue'),
             props: true,

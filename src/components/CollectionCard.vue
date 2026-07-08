@@ -20,9 +20,10 @@ const route = useRoute();
         <router-link :to="`/${collection}/${item.id}`" class="">
             <span class="font-display">{{ item.title }}</span>
         </router-link>
-        <router-link v-if="item?.artist_id && item?.artist_title" :to="`/artists/${item.artist_id}`"
-            class="text-muted hover:text-accent">
-            <span>{{ item?.artist_title }}</span>
+        <router-link
+            v-if="item.api_model === 'artworks' && (item as Artwork)?.artist_id && (item as Artwork)?.artist_title"
+            :to="`/artists/${(item as Artwork).artist_id}`" class="text-muted hover:text-accent">
+            <span>{{ (item as Artwork)?.artist_title }}</span>
         </router-link>
     </div>
 </div>

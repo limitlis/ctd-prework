@@ -216,7 +216,7 @@ export interface Thumbnail {
 }
 
 export interface ApiResponseData<T> {
-    data: T[];
+    data: T;
     info: {
             license_text: string[];
             license_links: string[];

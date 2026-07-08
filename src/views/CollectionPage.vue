@@ -25,7 +25,7 @@ async function getPagedResults() {
     if (search.value?.length) {
         queryParams.push(`q=${search.value}`);
 
-        const searchResult = await api.get<ApiResponseData<ESSearchResult>>(`${route.params.collection}${search.value?.length ? '/search' : ''}?${queryParams.join('&')}`)
+        const searchResult = await api.get<ApiResponseData<ESSearchResult[]>>(`${route.params.collection}${search.value?.length ? '/search' : ''}?${queryParams.join('&')}`)
             .catch((err) => {
                 error.value = err;
             });
@@ -33,7 +33,7 @@ async function getPagedResults() {
             const { pagination } = searchResult.data;
             if (searchResult.data?.data?.length) {
                 const ids = searchResult.data?.data?.map((r) => r.id) ?? [];
-                const result = await api.get<ApiResponseData<T>>(`${route.params.collection}?ids=${ids.join()}`)
+                const result = await api.get<ApiResponseData<T[]>>(`${route.params.collection}?ids=${ids.join()}`)
                     .catch((err) => {
                         error.value = err;
                     });
@@ -49,7 +49,7 @@ async function getPagedResults() {
         }
         results.value = [];
     } else {
-        const result = await api.get<ApiResponseData<T>>(`${route.params.collection}?${queryParams.join('&')}`)
+        const result = await api.get<ApiResponseData<T[]>>(`${route.params.collection}?${queryParams.join('&')}`)
             .catch((err) => {
                 error.value = err;
             });
@@ -123,7 +123,6 @@ onMounted(() => {
             <CollectionCard v-if="['artworks', 'exhibitions'].includes(route.params.collection as string)"
                 v-for="item in results" :key="item.id" :item
                 :collection="route.params.collection as 'artworks' | 'exhibitions'" />
-
         </div>
         <CollectionPagination v-model="currentPage" :total :items-per-page="12" @update:model-value="getPagedResults" />
     </template>
