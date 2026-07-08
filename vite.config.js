@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
             semi: false,
             singleQuote: true,
         },
-        base: isDev ? '/' : '/ctd-prework/',
+        base: '/',
         lint: {
             plugins: ['eslint', 'unicorn', 'oxc', 'vue'],
             categories: {

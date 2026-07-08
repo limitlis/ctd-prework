@@ -13,7 +13,7 @@ const src = ref<string | null>(null);
 let hasErrored = false;
 function onError(e: Event) {
     if (e.target && e.target instanceof HTMLImageElement && !hasErrored) {
-        e.target.src = location.host.includes('localhost') ? '/not-available.webp' : '/ctd-prework/not-available.webp';
+        e.target.src = '/not-available.webp';
         hasErrored = true;
     }
 }
