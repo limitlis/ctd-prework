@@ -7,21 +7,21 @@ import { useRoute, useRouter } from 'vue-router';
 import ArtworkDetail from '@/layouts/ArtworkDetail.vue';
 import ExhibitionDetail from '@/layouts/ExhibitionDetail.vue';
 import ArtistDetail from '@/layouts/ArtistDetail.vue';
-
+import PageSkeleton from '@/components/skeletons/PageSkeleton.vue';
 const route = useRoute();
 const router = useRouter();
 const item = ref<T>();
-const error = ref(null);
+const error = ref();
+const loading = ref(false);
 
 async function getItem(id: string) {
     const result = await api
         .get<ApiResponseData<T>>(`${route.params.collection}/${id}`)
-        .catch((err) => {
+        .catch((err: Error) => {
             error.value = err;
         });
     if (result?.status === 200) {
         const { data } = result.data;
-        console.log(data);
         item.value = data;
     }
 }
@@ -44,14 +44,13 @@ onMounted(() => {
 </script>
 
 <template>
-    <main>
-        <div class="text-sm">
-            <a @click="router.back()" class="text-muted hover:text-accent cursor-pointer"
-                >&lt; back</a
-            >
-        </div>
-        <article v-if="item && currentView" :key="item.id" class="space-y-4">
-            <component :is="currentView" :item />
-        </article>
-    </main>
+<main>
+    <div class="text-sm">
+        <a @click="router.back()" class="text-muted hover:text-accent cursor-pointer">&lt; back</a>
+    </div>
+    <article v-if="item && currentView && !loading" :key="item.id" class="space-y-4">
+        <component :is="currentView" :item />
+    </article>
+    <PageSkeleton v-else />
+</main>
 </template>
