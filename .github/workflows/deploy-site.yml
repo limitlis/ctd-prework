@@ -1,0 +1,36 @@
+name: Build & Deploy Site
+
+on:
+    workflow_dispatch:
+    push:
+      branches:
+        - main
+
+jobs:
+    deploy-website:
+        name: Build & Deploy
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pages: write
+        steps:
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v6.0.3
+              with:
+                  cache: true
+
+            - run: pnpm i
+
+            - name: Build website
+              run: |
+                  npx vp build
+
+            - name: Deploy to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
+
+            - name: Verify deployment
+              run: |
+                  echo "Website deployed to https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"

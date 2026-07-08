@@ -6,52 +6,56 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-    fmt: {
-        semi: false,
-        singleQuote: true,
-    },
-    lint: {
-        plugins: ['eslint', 'unicorn', 'oxc', 'vue'],
-        categories: {
-            correctness: 'error',
+export default defineConfig(({ mode }) => {
+    const isDev = mode === 'development';
+    return {
+        fmt: {
+            semi: false,
+            singleQuote: true,
         },
-        env: {
-            browser: true,
-            builtin: true,
-        },
-        ignorePatterns: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
-        rules: {
-            'no-case-declarations': 'error',
-            'no-empty': 'error',
-            'no-fallthrough': 'error',
-            'no-prototype-builtins': 'error',
-            'no-redeclare': 'error',
-            'no-regex-spaces': 'error',
-            'no-undef': 'error',
-            'no-unexpected-multiline': 'error',
-            'no-useless-assignment': 'error',
-            'preserve-caught-error': 'error',
-            'vite-plus/prefer-vite-plus-imports': 'error',
-        },
-        options: {
-            typeAware: true,
-            typeCheck: true,
-        },
-        jsPlugins: [
-            {
-                name: 'vite-plus',
-                specifier: 'vite-plus/oxlint-plugin',
+        base: isDev ? '/' : '/ctd-prework/',
+        lint: {
+            plugins: ['eslint', 'unicorn', 'oxc', 'vue'],
+            categories: {
+                correctness: 'error',
             },
-        ],
-    },
-    plugins: [vue(), vueDevTools(), tailwindcss()],
-    resolve: {
-        alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            env: {
+                browser: true,
+                builtin: true,
+            },
+            ignorePatterns: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+            rules: {
+                'no-case-declarations': 'error',
+                'no-empty': 'error',
+                'no-fallthrough': 'error',
+                'no-prototype-builtins': 'error',
+                'no-redeclare': 'error',
+                'no-regex-spaces': 'error',
+                'no-undef': 'error',
+                'no-unexpected-multiline': 'error',
+                'no-useless-assignment': 'error',
+                'preserve-caught-error': 'error',
+                'vite-plus/prefer-vite-plus-imports': 'error',
+            },
+            options: {
+                typeAware: true,
+                typeCheck: true,
+            },
+            jsPlugins: [
+                {
+                    name: 'vite-plus',
+                    specifier: 'vite-plus/oxlint-plugin',
+                },
+            ],
         },
-    },
-    server: {
-        port: 5155,
-    },
+        plugins: [vue(), vueDevTools(), tailwindcss()],
+        resolve: {
+            alias: {
+                '@': fileURLToPath(new URL('./src', import.meta.url)),
+            },
+        },
+        server: {
+            port: 5155,
+        },
+    }
 })
