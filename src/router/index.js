@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
             path: '/',
-            redirect: '/artworks'
+            redirect: '/artworks',
         },
         {
             path: '/:collection(artworks|exhibitions)',
@@ -38,6 +38,6 @@ const router = createRouter({
             return { top: 0 };
         }
     },
-})
+});
 
-export default router
+export default router;

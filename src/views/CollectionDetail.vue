@@ -1,4 +1,4 @@
-<script setup lang="ts" generic="T extends Artwork|Gallery|Exhibition">
+<script setup lang="ts" generic="T extends Artwork | Gallery | Exhibition">
 import { computed, onMounted, ref } from 'vue';
 import { api } from '@/services/aic-api';
 import { ApiResponseData, Artwork, Exhibition, Gallery } from '@/types';
@@ -14,7 +14,8 @@ const item = ref<T>();
 const error = ref(null);
 
 async function getItem(id: string) {
-    const result = await api.get<ApiResponseData<T>>(`${route.params.collection}/${id}`)
+    const result = await api
+        .get<ApiResponseData<T>>(`${route.params.collection}/${id}`)
         .catch((err) => {
             error.value = err;
         });
@@ -36,19 +37,21 @@ const currentView = computed(() => {
         default:
             return ArtworkDetail;
     }
-})
+});
 onMounted(() => {
     getItem(route.params.id as string);
 });
 </script>
 
 <template>
-<main>
-    <div class="text-sm">
-        <a @click="router.back()" class="text-muted hover:text-accent cursor-pointer">&lt; back</a>
-    </div>
-    <article v-if="item && currentView" :key="item.id" class="space-y-4">
-        <component :is="currentView" :item />
-    </article>
-</main>
+    <main>
+        <div class="text-sm">
+            <a @click="router.back()" class="text-muted hover:text-accent cursor-pointer"
+                >&lt; back</a
+            >
+        </div>
+        <article v-if="item && currentView" :key="item.id" class="space-y-4">
+            <component :is="currentView" :item />
+        </article>
+    </main>
 </template>

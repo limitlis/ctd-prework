@@ -1,51 +1,51 @@
 {
-  "name": "ctd-prework",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "homepage": "https://ctd.limitlis.com",
-  "scripts": {
-    "dev": "vp dev",
-    "build": "vp build",
-    "preview": "vp preview",
-    "lint": "run-s \"lint:*\"",
-    "lint:oxlint": "vp lint . --fix",
-    "lint:eslint": "vp lint . --fix",
-    "format": "vp fmt src/"
-  },
-  "dependencies": {
-    "vue": "^3.5.38",
-    "vue-router": "^5.1.0",
-    "xior": "^0.8.3"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@tailwindcss/typography": "^0.5.20",
-    "@tailwindcss/vite": "^4.3.2",
-    "@vitejs/plugin-vue": "^6.0.7",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-oxlint": "~1.69.0",
-    "eslint-plugin-vue": "~10.9.2",
-    "globals": "^17.6.0",
-    "npm-run-all2": "^9.0.2",
-    "tailwindcss": "^4.3.2",
-    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-    "vite-plugin-vue-devtools": "^8.1.2",
-    "vite-plus": "latest",
-    "vue-eslint-parser": "^10.4.1"
-  },
-  "overrides": {
-    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-  },
-  "pnpm": {
+    "name": "ctd-prework",
+    "version": "0.0.0",
+    "private": true,
+    "homepage": "https://ctd.limitlis.com",
+    "type": "module",
+    "scripts": {
+        "dev": "vp dev",
+        "build": "vp build",
+        "preview": "vp preview",
+        "lint": "run-s \"lint:*\"",
+        "lint:oxlint": "vp lint . --fix",
+        "lint:eslint": "vp lint . --fix",
+        "format": "vp fmt src/"
+    },
+    "dependencies": {
+        "vue": "^3.5.38",
+        "vue-router": "^5.1.0",
+        "xior": "^0.8.3"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.2",
+        "@vitejs/plugin-vue": "^6.0.7",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-oxlint": "~1.69.0",
+        "eslint-plugin-vue": "~10.9.2",
+        "globals": "^17.6.0",
+        "npm-run-all2": "^9.0.2",
+        "tailwindcss": "^4.3.2",
+        "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+        "vite-plugin-vue-devtools": "^8.1.2",
+        "vite-plus": "latest",
+        "vue-eslint-parser": "^10.4.1"
+    },
     "overrides": {
-      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+        "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+        "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    },
+    "engines": {
+        "node": "^22.18.0 || >=24.12.0"
+    },
+    "packageManager": "pnpm@10.33.0",
+    "pnpm": {
+        "overrides": {
+            "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+            "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+        }
     }
-  },
-  "engines": {
-    "node": "^22.18.0 || >=24.12.0"
-  },
-  "packageManager": "pnpm@10.33.0"
 }

@@ -1,17 +1,18 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig } from 'vite-plus'
-import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite-plus';
+import vue from '@vitejs/plugin-vue';
+import vueDevTools from 'vite-plugin-vue-devtools';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
     const isDev = mode === 'development';
     return {
         fmt: {
-            semi: false,
+            semi: true,
             singleQuote: true,
+            tabWidth: 4,
         },
         base: '/',
         lint: {
@@ -57,5 +58,5 @@ export default defineConfig(({ mode }) => {
         server: {
             port: 5155,
         },
-    }
-})
+    };
+});
