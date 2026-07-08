@@ -10,10 +10,11 @@ const getImageUrl = (): string => {
 };
 
 const src = ref<string | null>(null);
-
+let hasErrored = false;
 function onError(e: Event) {
-    if (e.target && e.target instanceof HTMLImageElement) {
-        e.target.src = '/not-available.webp';
+    if (e.target && e.target instanceof HTMLImageElement && !hasErrored) {
+        e.target.src = location.host.includes('localhost') ? '/not-available.webp' : '/ctd-prework/not-available.webp';
+        hasErrored = true;
     }
 }
 onMounted(() => {
@@ -25,7 +26,7 @@ onMounted(() => {
 <div class="overflow-hidden bg-border">
     <img v-if="src" :src :alt loading="lazy"
         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-contrast"
-        @error="onError" />
+        crossorigin="anonymous" @error="onError" />
     <div v-else class="w-full h-full bg-contrast">
 
     </div>

@@ -45,7 +45,7 @@ onMounted(() => {
         {{ item.title }}
         <span class="text-accent text-base">{{ item.gallery_title }}</span>
     </h1>
-    <img :src="item.image_url" alt="" class="w-full">
+    <img :src="item.image_url" crossorigin="anonymous" alt="" class="w-full">
     <div class="grid grid-cols-12 gap-4">
         <CollectionImage v-if="item.image_id" :image-id="item.image_id" :size="400"
             class="col-span-12 sm:col-span-4 max-w-60 mr-4" />
@@ -59,7 +59,7 @@ onMounted(() => {
                         <li v-for="artist in relatedArtists" :key="artist.id">
                             • <router-link :to="`/artists/${artist.id}`" class="hover:text-accent cursor-pointer">{{
                                 artist.title
-                                }}</router-link>
+                            }}</router-link>
                         </li>
                     </ul>
                 </div>
