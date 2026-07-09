@@ -44,7 +44,7 @@ onMounted(() => {
 
 <template>
 <div class="overflow-hidden bg-border relative">
-    <img v-if="thumbnail?.lqip" ref="thumb" :src="thumbnail?.lqip" :alt
+    <img v-if="thumbnail?.lqip" ref="thumb" :src="thumbnail?.lqip" :alt="`Preview thumbnail for image ${imageId}.`"
         class="absolute w-full h-full object-cover transition-all opacity-1" crossorigin="anonymous"
         @error="onThumbError" />
     <img v-if="src" :src :alt loading="lazy"

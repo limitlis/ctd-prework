@@ -54,9 +54,9 @@ onMounted(() => {
     <img :src="item.image_url" crossorigin="anonymous" alt="" class="w-full" />
     <div class="grid grid-cols-12 gap-4">
         <CollectionImage v-if="item.image_id" :image-id="item.image_id" :size="400"
-            class="col-span-12 sm:col-span-4 max-w-60 mr-4" />
+            :alt="item.short_description || item.short_description" class="col-span-12 sm:col-span-4 max-w-60 mr-4" />
         <div class="col-span-12 sm:col-span-8">
-            <p class="prose" v-html="item.short_description"></p>
+            <p class="prose dark:prose-invert" v-html="item.short_description"></p>
 
             <template v-if="relatedArtists.length">
                 <h2 class="font-display text-xl pt-6">Featured Artists</h2>

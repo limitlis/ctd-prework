@@ -43,10 +43,10 @@ onMounted(() => {
     <h1 class="text-2xl font-display flex flex-col border-b pb-6">
         {{ item.title }}
         <span class="text-accent text-base">{{ item.birth_date }}{{ item.death_date ? `— ${item.death_date}` : ''
-        }}</span>
+            }}</span>
     </h1>
 
-    <p v-if="item.description" class="prose border-b pb-6" v-html="item.description"></p>
+    <p v-if="item.description" class="prose dark:prose-invert border-b pb-6" v-html="item.description"></p>
     <!-- <p v-else>No description provided.</p> -->
     <h4 class="font-display text-xl pt-6">Related Works</h4>
     <div class="grid grid-cols-12 gap-6 py-8">

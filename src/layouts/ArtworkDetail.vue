@@ -23,9 +23,10 @@ const displayDetails = [
         </router-link>
         <span class="text-accent text-base">{{ item.date_display }}</span>
     </h1>
-    <CollectionImage v-if="item.image_id" :image-id="item.image_id" :thumbnail="item.thumbnail" />
+    <CollectionImage v-if="item.image_id" :image-id="item.image_id" :thumbnail="item.thumbnail"
+        :alt="item?.short_description || item?.short_description || item.title" />
     <p class="text-center text-sm text-muted">{{ item.credit_line }}</p>
-    <p class="prose" v-html="item.description"></p>
+    <p class="prose dark:prose-invert" v-html="item.description"></p>
 
     <div class="flex flex-col border-t">
         <div v-if="item.dimensions" class="p-4 border-b">
@@ -48,7 +49,7 @@ const displayDetails = [
             <h3 class="text-sm font-display">Techniques</h3>
             <p class="text-xs font-light">
                 <span v-for="(tech, index) in item.technique_titles" :key="tech">{{ tech
-                }}<span v-if="index < item.technique_titles.length - 1">, </span></span>
+                    }}<span v-if="index < item.technique_titles.length - 1">, </span></span>
             </p>
         </div>
     </div>

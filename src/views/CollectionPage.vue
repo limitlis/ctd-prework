@@ -96,7 +96,7 @@ onMounted(() => {
         <form @submit.prevent="doSearch">
             <div class="relative flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
+                    class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600 dark:text-accent">
                     <path fill-rule="evenodd"
                         d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
                         clip-rule="evenodd" />
@@ -107,7 +107,7 @@ onMounted(() => {
                         class="w-full bg-transparent text-sm border rounded-md pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-accent hover:border-accent [&::-webkit-search-cancel-button]:appearance-none"
                         placeholder="Artwork, Artists..." />
                     <button v-if="search.length" type="button" id="clear-btn" @click="clearSearch()"
-                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none cursor-pointer"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-accent dark:text-gray-500 hover:dark:text-accent focus:outline-none cursor-pointer transition-colors"
                         aria-label="Clear search">
                         <svg xmlns="http://w3.org" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
